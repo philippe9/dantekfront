@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CommunicationService } from '../../helpers/communication';
 declare var jQuery: any;
 @Component({
   selector: 'app-confirm-modal',
@@ -6,13 +7,28 @@ declare var jQuery: any;
   styleUrls: ['./confirm-modal.component.css']
 })
 export class ConfirmModalComponent implements OnInit {
+  @Output() decisionEmitter = new EventEmitter();
 
-  constructor() { }
+  constructor(private com: CommunicationService) {
+    this.com.getMessage().subscribe((message) => {
+      console.log(message)
+      if (message.state === 'Open Modal confirm') {
+        jQuery('#confirmModal').modal('show');
+      }
+
+
+    });
+  }
 
   ngOnInit(): void {
   }
-  message(decision) {
 
+  /**
+   * Return the decision
+   * @param decision Boolean of the decision
+   */
+  message(decision): void {
+    this.decisionEmitter.emit(decision);
   }
 }
 

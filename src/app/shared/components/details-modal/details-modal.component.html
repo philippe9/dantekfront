@@ -1,17 +1,17 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+                <h5 class="modal-title" id="detailsModalLabel">{{textLangue.text_details}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
             </div>
             <div class="modal-body">
-                <p><b>Anglais</b></p>
-                <p><b>Ecrit: </b>Intermediare</p>
-                <p><b>Oral: </b>Intermediare</p>
-                <p><b>Comprehension: </b>Intermediare</p>
+                <p><b>{{competence.nom_autre_langue}}</b></p>
+                <p><b>Ecrit: </b>{{competence.niveau_1.text_competence_langue}}</p>
+                <p><b>Oral: </b>{{competence.niveau_2.text_competence_langue}}</p>
+                <p><b>Comprehension: </b>{{competence.niveau_3.text_competence_langue}}</p>
             </div>
             <!-- <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 
 import { catchError, retry, last } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 import { timeout } from 'rxjs/operators/timeout';
 
 
@@ -29,7 +29,7 @@ export class RequestService {
    * @param {any} link - The address to which the request is done
    * @param {any} data - the data to be sent
    */
-  post(link: any, data: any): any {
+  post(link: any, data: any): Observable<any> {
 
     console.log(link);
     return this.http.post<any>(link, data).pipe(
@@ -42,7 +42,7 @@ export class RequestService {
    * @param {any} link - The address to which the request is done
    * @param {any} data - the data to be sent
    */
-  put(link: any, data: any): any {
+  put(link: any, data: any): Observable<any> {
     return this.http.put<any>(link, data).pipe(
       last(), // return last (completed) message to caller
       catchError(this.handleError)
@@ -54,7 +54,7 @@ export class RequestService {
    * @param {any} link - The address to which the request is done
    * @param {any} data - the data to be sent
    */
-  get(link: any): any {
+  get(link: any): Observable<any> {
     return this.http.get<any>(link).pipe(
       timeout(10000),
       retry(2),

@@ -383,6 +383,7 @@ p {
 
 .nav .active {
     border-radius: 20px;
+    transition: background .3s linear;
 }
 
 .color_div {

@@ -1,36 +1,36 @@
 <div class="w-100 d-flex card mt-1 flex-row p-1 card_shadow hide-on-small-only">
-    <div class="flex-fill">Neerlandais</div>
-    <div class="flex-fill">Intermediare</div>
-    <div class="flex-fill">Courant</div>
-    <div class="flex-fill">Langue naative</div>
+    <div class="flex-fill">{{competence.nom_autre_langue}}</div>
+    <div class="flex-fill">{{competence.niveau_1.text_competence_langue}}</div>
+    <div class="flex-fill">{{competence.niveau_2.text_competence_langue}}</div>
+    <div class="flex-fill">{{competence.niveau_3.text_competence_langue}}</div>
     <div class="flex-fill">
-        <svg class="ml-half" data-toggle="modal" data-target="#exampleModal" viewBox="0 0 24 24">
+        <svg class="ml-half" viewBox="0 0 24 24" (click)="emitDetails()">
       <path fill="#EECD2D"
         d="M17 9H7V7h10m0 6H7v-2h10m-3 6H7v-2h7M12 3a1 1 0 011 1 1 1 0 01-1 1 1 1 0 01-1-1 1 1 0 011-1m7 0h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2z" />
-      </svg>
-        <svg class="ml-half" viewBox="0 0 24 24">
+    </svg>
+        <svg class="ml-half" viewBox="0 0 24 24" (click)="emitUpdate()">
       <path fill="#109115"
         d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z" />
-      </svg>
-        <svg class="ml-half" data-toggle="modal" data-target="#exampleModal" viewBox="0 0 24 24">
+    </svg>
+        <svg class="ml-half" viewBox="0 0 24 24" (click)="emitDelete()">
       <path fill="#FB0707" d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 002 2h8a2 2 0 002-2V7H6v12z" /></svg>
     </div>
 </div>
 <div class="w-100 d-flex card card_shadow mt-1 p-1  d-sm-block d-md-none d-lg-none hide-on-med-and-up">
-    <p><b>Anglais</b></p>
-    <p><b>Ecrit: </b>Intermediare</p>
-    <p><b>Oral: </b>Intermediare</p>
-    <p><b>Comprehension: </b>Intermediare</p>
+    <p><b>{{competence.nom_autre_langue}}</b></p>
+    <p><b>Ecrit: </b>{{competence.niveau_1.text_competence_langue}}</p>
+    <p><b>Oral: </b>{{competence.niveau_2.text_competence_langue}}</p>
+    <p><b>Comprehension: </b>{{competence.niveau_3.text_competence_langue}}</p>
     <div class="d-flex mt-half">
-        <svg class="ml-half" data-toggle="modal" data-target="#exampleModal" viewBox="0 0 24 24">
+        <svg class="ml-half" viewBox="0 0 24 24" (click)="emitDetails()">
       <path fill="#EECD2D"
         d="M17 9H7V7h10m0 6H7v-2h10m-3 6H7v-2h7M12 3a1 1 0 011 1 1 1 0 01-1 1 1 1 0 01-1-1 1 1 0 011-1m7 0h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2z" />
-      </svg>
-        <svg class="ml-half" viewBox="0 0 24 24">
+    </svg>
+        <svg class="ml-half" viewBox="0 0 24 24" (click)="emitUpdate()">
       <path fill="#109115"
         d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z" />
-      </svg>
-        <svg class="ml-half" data-toggle="modal" data-target="#confirmModal" viewBox="0 0 24 24">
+    </svg>
+        <svg class="ml-half" viewBox="0 0 24 24" (click)="emitDelete()">
       <path fill="#FB0707" d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 002 2h8a2 2 0 002-2V7H6v12z" /></svg>
     </div>
 </div>

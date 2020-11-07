@@ -2,16 +2,15 @@
     <div class="col-lg-1  d-sm-none d-md-block d-lg-block"></div>
     <div class="col-lg-7 ml-half mr-half">
         <nav class="nav nav-pills nav-fill round_edge mt-2" style="background-color: #f5f5f58a;">
-            <a class="nav-item nav-link active" href="#">Active</a>
-            <a class="nav-item nav-link text-white" href="#">Link</a>
-            <a class="nav-item nav-link text-white" href="#">Link</a>
-            <a class="nav-item nav-link text-white" href="#">Disabled</a>
-            <a class="nav-item nav-link text-white" href="#">Link</a>
-            <a class="nav-item nav-link text-white" href="#">Disabled</a>
+            <ng-container *ngFor="let language of languages;let i=index">
+                <a class="nav-item nav-link text-white" [ngClass]="{'active':language.is_actif === true}" href="javascript:;" (click)="activeLangue(language)">{{language.nom_autre_langue}}</a>
+            </ng-container>
         </nav>
     </div>
     <div class="col-lg-3 ml-half mr-half">
-        <button class="btn btn-secondary disabled text-white right  round_edge mt-2">Modal closed</button>
+        <button class="btn btn-secondary disabled text-white right  round_edge mt-2"> <span
+        *ngIf="modalState">{{textLangue.text_modal_opened}}</span> <span
+        *ngIf="!modalState">{{textLangue.text_modal_closed}}</span> </button>
     </div>
     <div class="col-lg-1  d-sm-none d-md-block d-lg-block p-0"></div>
 
@@ -19,145 +18,23 @@
 <div class="row">
     <div class="col-lg-1  d-sm-none d-md-block d-lg-block"></div>
     <div class="col-lg-7 ml-half mr-half mt-3">
-        <h5 class="text-white">Liste des langues <span class="badge badge-pill badge-warning">9</span></h5>
+        <h5 class="text-white">{{textLangue.text_liste_langues}} <span class="badge badge-pill badge-warning">{{langueCompetence.length}}</span></h5>
 
         <div class="w-100 d-flex p-1 mt-1 hide-on-small-only" style="background-color: #F5F5F5;">
-            <div class="flex-fill">Langues</div>
-            <div class="flex-fill">Oral</div>
-            <div class="flex-fill">Ecrit</div>
-            <div class="flex-fill">Comprehension</div>
+            <div class="flex-fill">{{textLangue.text_liste_langues}}</div>
+            <div class="flex-fill">{{textLangue.text_niveau_parle}}</div>
+            <div class="flex-fill">{{textLangue.text_niveau_ecrit}}</div>
+            <div class="flex-fill">{{textLangue.text_niveau_comprehension}}</div>
             <div class="flex-fill"></div>
         </div>
-        <div class="w-100 d-flex card mt-1 flex-row p-1 card_shadow hide-on-small-only">
-            <div class="flex-fill">Neerlandais</div>
-            <div class="flex-fill">Intermediare</div>
-            <div class="flex-fill">Courant</div>
-            <div class="flex-fill">Langue naative</div>
-            <div class="flex-fill">
-                <svg class="ml-half" data-toggle="modal" data-target="#exampleModal" viewBox="0 0 24 24">
-          <path fill="#EECD2D"
-            d="M17 9H7V7h10m0 6H7v-2h10m-3 6H7v-2h7M12 3a1 1 0 011 1 1 1 0 01-1 1 1 1 0 01-1-1 1 1 0 011-1m7 0h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2z" />
-          </svg>
-                <svg class="ml-half" viewBox="0 0 24 24">
-          <path fill="#109115"
-            d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z" />
-          </svg>
-                <svg class="ml-half" data-toggle="modal" data-target="#exampleModal" viewBox="0 0 24 24">
-          <path fill="#FB0707" d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 002 2h8a2 2 0 002-2V7H6v12z" /></svg>
-            </div>
-        </div>
-        <div class="w-100 d-flex card card_shadow mt-1 p-1  d-sm-block d-md-none d-lg-none hide-on-med-and-up">
-            <p><b>Anglais</b></p>
-            <p><b>Ecrit: </b>Intermediare</p>
-            <p><b>Oral: </b>Intermediare</p>
-            <p><b>Comprehension: </b>Intermediare</p>
-            <div class="d-flex mt-half">
-                <svg class="ml-half" data-toggle="modal" data-target="#exampleModal" viewBox="0 0 24 24">
-          <path fill="#EECD2D"
-            d="M17 9H7V7h10m0 6H7v-2h10m-3 6H7v-2h7M12 3a1 1 0 011 1 1 1 0 01-1 1 1 1 0 01-1-1 1 1 0 011-1m7 0h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2z" />
-          </svg>
-                <svg class="ml-half" viewBox="0 0 24 24">
-          <path fill="#109115"
-            d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z" />
-          </svg>
-                <svg class="ml-half" data-toggle="modal" data-target="#confirmModal" viewBox="0 0 24 24">
-          <path fill="#FB0707" d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 002 2h8a2 2 0 002-2V7H6v12z" /></svg>
-            </div>
-        </div>
+
+        <app-language-card *ngFor="let competence of langueCompetence;let i=index" [competence]="competence" [index]="i" (detailsEmmit)="detailsReceived($event)" (updateEmmit)="updateReceived($event)" (deleteEmmit)="deleteReceived($event)">
+        </app-language-card>
     </div>
     <div class="col-lg-3 mt-3 ml-half mr-half">
-        <h5 class="title_text">Ajouter une langue</h5>
-        <div class="card p-2 card_shadow" style="background-color: #E8F5FF;">
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Choisir une langue *</label>
-                <select class="form-control round_edge">
-          <option value="">Selectionner une langue</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Choisir une langue *</label>
-                <select class="form-control round_edge">
-          <option value="">Selectionner une langue</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Choisir une langue *</label>
-                <select class="form-control round_edge">
-          <option value="">Selectionner une langue</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Choisir une langue *</label>
-                <select class="form-control round_edge">
-          <option value="">Selectionner une langue</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-            </div>
-            <div class="d-flex justify-content-center">
-                <button class="btn btn-primary text-white round_edge mt-2 w-50">Enregistrer</button>
-
-            </div>
-
-        </div>
+        <app-language-form [textLangue]="textLangue" [competence]="detailsCompetence" [langueCompetences]="textCompetences" [languesDispo]="languages"></app-language-form>
     </div>
     <div class="col-lg-1  d-sm-none d-md-block d-lg-block p-0"></div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-                </div>
-                <div class="modal-body">
-                    <p><b>Anglais</b></p>
-                    <p><b>Ecrit: </b>Intermediare</p>
-                    <p><b>Oral: </b>Intermediare</p>
-                    <p><b>Comprehension: </b>Intermediare</p>
-                </div>
-                <!-- <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-              </div> -->
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmation Modal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-                </div>
-                <div class="modal-body">
-                    <p><b>Voulez vous vraiment supprimer cette langue ?</b></p>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger">
-            Oui
-          </button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Non</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <app-details-modal [textLangue]="textLangue" [competence]="detailsCompetence" (closeEmitter)="detailsModalClose($event)"></app-details-modal>
+    <app-confirm-modal (decisionEmitter)="decisonModal($event)"></app-confirm-modal>
 </div>

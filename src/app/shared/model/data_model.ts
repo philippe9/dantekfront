@@ -6,7 +6,8 @@ export interface Langue {
 export interface AutreLangue {
   id_langue: number;
   id_langue_autre: number;
-  nom_autre_langue: string;
+  nom_autre_langue?: string;
+  is_actif?: boolean;
 }
 
 export interface TextLangue {
@@ -27,8 +28,13 @@ export interface TextLangue {
 export interface Competence {
   id_competence: number;
   text_competence: string;
+  text_competence_langue?: string;
   id_langue?: number;
   nom_langue?: string;
+  nom_autre_langue?: string;
+  niveau_1?: any;
+  niveau_2?: any;
+  niveau_3?: any;
   niveau?: string;
   id_niveau?: number;
 }

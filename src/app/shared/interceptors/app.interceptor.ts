@@ -6,7 +6,7 @@
  * @name AppInterceptor
  */
 
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import {
   HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpEventType, HttpResponse
 } from '@angular/common/http';
@@ -34,7 +34,8 @@ export class AppInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>> {
     let newReq;
-    if (environment.production) {
+    // console.log(isDevMode());
+    if (!isDevMode()) {
       newReq = req.clone({
         url: PRODUCTION_API + req.url
       });
@@ -52,7 +53,7 @@ export class AppInterceptor implements HttpInterceptor {
 
     return next.handle(newReq).pipe(
       tap(
-        succ => { succ; },
+        succ => { return succ; },
         err => {
           return err;
         })
