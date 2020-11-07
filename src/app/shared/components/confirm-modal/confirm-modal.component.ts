@@ -28,6 +28,7 @@ export class ConfirmModalComponent implements OnInit {
    * @param decision Boolean of the decision
    */
   message(decision): void {
+    jQuery('#confirmModal').modal('hide');
     this.decisionEmitter.emit(decision);
   }
 }

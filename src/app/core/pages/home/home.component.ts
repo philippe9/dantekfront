@@ -85,6 +85,7 @@ export class HomeComponent implements OnInit {
   };
   langueCompetence: Competence[] = [];
   textCompetences: Competence[] = [];
+  delete_index = 0;
   constructor(private request: CorePrototype, private com: CommunicationService) { }
 
   ngOnInit(): void {
@@ -210,10 +211,16 @@ export class HomeComponent implements OnInit {
    */
   decisonModal($event: any) {
     // this.com.clearMessage();
+    console.log($event);
     if ($event) {
-      //launch delete
+      this.langueCompetence.splice(this.delete_index, 1);
     } else {
 
     }
+  }
+
+  newCompetence($event) {
+    console.log($event)
+    this.langueCompetence.push($event);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TextLangue, Competence, AutreLangue } from '../../model/data_model';
 
@@ -14,11 +14,17 @@ export class LanguageFormComponent implements OnInit {
   @Input() langueCompetences: Competence[];
   @Input() languesDispo: AutreLangue[];
 
+  @Output() competenceEx = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
   submit(form: NgForm) {
     console.log(form);
+    if (!form.valid) {
+      alert('Remplir tous les champs obligatoires');
+    } else {
+      this.competenceEx.emit(this.competence);
+    }
   }
 }

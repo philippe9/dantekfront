@@ -4,36 +4,36 @@
     <form id="langForm" (ngSubmit)="submit(formTag)" autocomplete="off" #formTag="ngForm" (keydown.enter)="$event.preventDefault()">
         <div class="form-group">
             <label for="exampleFormControlSelect1">{{textLangue.text_choix_langue}}*</label>
-            <select class="form-control round_edge" [(ngModel)]="competence.id_langue" name="id_langue">
+            <select class="form-control round_edge" [(ngModel)]="competence.nom_autre_langue" name="id_langue" required>
         <option value='0'>{{textLangue.text_selection}}</option>
-        <option *ngFor="let langueDispo of languesDispo" [value]="langueDispo.id_langue">
+        <option *ngFor="let langueDispo of languesDispo" [value]="langueDispo.nom_autre_langue">
           {{langueDispo.nom_autre_langue}}
         </option>
       </select>
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">{{textLangue.text_niveau_parle}} *</label>
-            <select class="form-control round_edge" [(ngModel)]="competence.niveau_1.id_competence" name="id_competence_1">
+            <select class="form-control round_edge" [(ngModel)]="competence.niveau_1.text_competence_langue" name="id_competence_1" required>
         <option value='0' selected>{{textLangue.text_selection}}</option>
-        <option *ngFor="let langueCompetence of langueCompetences" [value]="langueCompetence.id_competence">
+        <option *ngFor="let langueCompetence of langueCompetences" [value]="langueCompetence.text_competence_langue">
           {{langueCompetence.text_competence_langue}}
         </option>
       </select>
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">{{textLangue.text_niveau_ecrit}} *</label>
-            <select class="form-control round_edge" [(ngModel)]="competence.niveau_2.id_competence" name="id_competence_2">
+            <select class="form-control round_edge" [(ngModel)]="competence.niveau_2.text_competence_langue" name="id_competence_2" required>
         <option value='0' selected>{{textLangue.text_selection}}</option>
-        <option *ngFor="let langueCompetence of langueCompetences" [value]="langueCompetence.id_competence">
+        <option *ngFor="let langueCompetence of langueCompetences" [value]="langueCompetence.text_competence_langue">
           {{langueCompetence.text_competence_langue}}
         </option>
       </select>
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">{{textLangue.text_niveau_comprehension}} *</label>
-            <select class="form-control round_edge" [(ngModel)]="competence.niveau_3.id_competence" name="id_competence_3">
+            <select class="form-control round_edge" [(ngModel)]="competence.niveau_3.text_competence_langue" name="id_competence_3" required>
         <option value='0' selected>{{textLangue.text_selection}}</option>
-        <option *ngFor="let langueCompetence of langueCompetences" [value]="langueCompetence.id_competence">
+        <option *ngFor="let langueCompetence of langueCompetences" [value]="langueCompetence.text_competence_langue">
           {{langueCompetence.text_competence_langue}}
         </option>
       </select>

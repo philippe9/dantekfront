@@ -28,11 +28,11 @@
             <div class="flex-fill"></div>
         </div>
 
-        <app-language-card *ngFor="let competence of langueCompetence;let i=index" [competence]="competence" [index]="i" (detailsEmmit)="detailsReceived($event)" (updateEmmit)="updateReceived($event)" (deleteEmmit)="deleteReceived($event)">
+        <app-language-card *ngFor="let competence of langueCompetence;let i=index" [competence]="competence" [index]="i" (detailsEmmit)="detailsReceived($event)" (updateEmmit)="updateReceived($event)" (deleteEmmit)="deleteReceived($event)" (click)="this.delete_index = i">
         </app-language-card>
     </div>
     <div class="col-lg-3 mt-3 ml-half mr-half">
-        <app-language-form [textLangue]="textLangue" [competence]="detailsCompetence" [langueCompetences]="textCompetences" [languesDispo]="languages"></app-language-form>
+        <app-language-form [textLangue]="textLangue" [competence]="detailsCompetence" [langueCompetences]="textCompetences" [languesDispo]="languages" (competenceEx)="newCompetence($event)"></app-language-form>
     </div>
     <div class="col-lg-1  d-sm-none d-md-block d-lg-block p-0"></div>
     <app-details-modal [textLangue]="textLangue" [competence]="detailsCompetence" (closeEmitter)="detailsModalClose($event)"></app-details-modal>
